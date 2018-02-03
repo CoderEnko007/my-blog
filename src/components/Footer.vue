@@ -1,7 +1,7 @@
 <template>
   <div class="blog-footer">
       <div class="container">
-          <p><i class="fa fa-wheelchair-alt" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Imprisoned in a day</p>
+          <p><i class="fa fa-wheelchair-alt" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Imprisoned in one day</p>
       </div>
   </div>
 </template>

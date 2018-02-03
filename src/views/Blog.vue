@@ -1,18 +1,15 @@
 <template>
   <div class="blog">
-    <div class="header-pic">
-      <div class="container">
-        <div class="title">
-          <h1>Bulijiojio</h1>
-        </div>
-      </div>
-    </div>    
     <blog-header></blog-header>
     <div class="content">
       <div class="container">
         <el-row :gutter="50">
-          <el-col :span="15"><div class="grid-content main-list"></div></el-col>
-          <el-col :span="9"><div class="grid-content side-list"></div></el-col>
+          <el-col :span="15" class='main-list'>
+            <div class="grid-content">
+              <article-list :dataList="messageLists"></article-list>
+            </div>
+          </el-col>
+          <el-col :span="9" class='side-list'><div class="grid-content"></div></el-col>
         </el-row>
       </div>
     </div>
@@ -23,17 +20,30 @@
 <script>
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ArticleList from '@/components/ArticleList'
 
 export default {
   name: 'Blog',
+  components: {
+    'blogHeader': Header,
+    'blogFooter': Footer,
+    'articleList': ArticleList,
+  },
   data () {
     return {
-      
+      messageLists: [],
     }
   },
-  components: {
-    'blog-header': Header,
-    'blog-footer': Footer,
+  mounted() {
+    this.getMessage();
+  },
+  methods: {
+    getMessage() {
+      this.$axios.get('http://jsonplaceholder.typicode.com/posts')
+        .then((rsp) => {
+          this.messageLists = rsp.data.slice(0, 8);
+        })
+    }
   }
 }
 </script>

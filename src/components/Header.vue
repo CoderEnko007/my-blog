@@ -1,6 +1,13 @@
 <template>
   <div id="header">
-    <div class="container">
+    <div class="header-pic">
+      <div class="container">
+        <div class="title">
+          <h1>{{title}}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="navigation">
       <el-menu 
         class="el-menu-demo" 
         mode="horizontal" 
@@ -17,11 +24,15 @@
           </el-submenu>
           <el-menu-item index="3">留&nbsp;&nbsp;&nbsp;&nbsp;言</el-menu-item>
           <el-menu-item index="4">关&nbsp;&nbsp;&nbsp;&nbsp;于</el-menu-item>
-          <div class="search-bar">
-          </div>
       </el-menu>
     </div>
-  </div>
+    <div class="search">
+      <form>
+        <input type="text" name="search" id="search" placeholder="请输入...">
+        <button type="submit"></button>
+      </form>
+    </div>
+  </div>  
 </template>
 
 <script>
@@ -31,6 +42,7 @@ export default {
     return {
       activeIndex: '1',
       tags:[],
+      title:'Bulijiojio'
     }
   },
   methods: {
@@ -46,12 +58,12 @@ export default {
       // console.log(tag)
     },
     handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
     }
   },
   mounted() {
     this.getTags();
-    console.log(this.tags)
+    // console.log(this.tags)
   }
 }
 </script>
