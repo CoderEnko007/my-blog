@@ -1,3 +1,6 @@
+a {
+    text-decoration: none;
+}
 #header {
     position: relative;
     /*margin-top: -61px;*/
@@ -6,7 +9,7 @@
     padding-left: 10%;
 }
 .header-pic {
-    height: 280px;
+    height: 320px;
     background: url(/static/chongshi001.jpg) center no-repeat;
     position: relative;
 }
@@ -18,67 +21,21 @@
 }
 .title h1 {
     color: #FFF;
-    text-shadow: 0 0 18px #FF000080;
+    text-shadow: 0 0 18px #C6F0F4;
     font-family: 'Geo', sans-serif;
     font-size: 80px;
     font-weight: bold;
     letter-spacing: .1em;
 }
 .navigation {
-    /*position: relative;*/
-    /*width: 100%;*/
-}
-.search {
-    box-sizing: border-box;
-    width: 280px;
     position: absolute;
-    margin-top: -58px;
-    right: 50px;
-    padding: 10px 0;
+    width: 100%;
+    bottom: -2px;
 }
-.search form {
-    position: relative;
-    font-weight:500;
-    font-family:"Microsoft YaHei","宋体","Segoe UI","Lucida Grande",Helvetica,Arial,sans-serif,FreeSans,Arimo;
+.el-menu-demo {
+    /*background-color: rgba(0,0,0,.4);*/
 }
-.search input, button {
-    border: none;
-    outline: none;
-}
-.search input {
-    box-sizing: border-box;
-    width: 200px;
-    height: 38px;
-    border: 2px solid #324B4E;
-    border-radius: 42px;
-    background-color: #F9F0DA;
-    float: right;
-    transition: .3s linear;
-    padding-left: 14px;
-}
-.search button {
-    box-sizing: border-box;
-    height: 42px;
-    width: 42px;
-    background: none;
-    top: -2px;
-    right: 20px;
-    cursor: pointer;
-    position: absolute;
-}
-.search input:focus {
-    width: 280px;
-}
-.search button:before {
-    content: "Search";
-    font-family: FontAwesome;
-    color: #324b4e;
-}
-
 @media (max-width: 700px) {
-    .search {
-        display: none;
-    }
     .title {
         text-align: center;
         margin: 0 auto;

@@ -6,32 +6,27 @@
           <h1>{{title}}</h1>
         </div>
       </div>
+      <div class="navigation">
+        <el-menu 
+          class="el-menu-demo" 
+          mode="horizontal" 
+          text-color="#fff"
+          active-text-color="#7DC6F0"
+          background-color="#000"
+          v-bind:default-active="activeIndex" 
+          v-on:select="handleSelect">
+            <el-menu-item index="1"><router-link to="/">首&nbsp;&nbsp;&nbsp;&nbsp;页</router-link></el-menu-item>
+            <el-submenu index="2">
+                <template slot='title'>分&nbsp;&nbsp;&nbsp;&nbsp;类</template>
+                <el-menu-item :index="''+tag.subindex" v-for="tag in tags" :key='tag.subindex'>{{tag.subitem}}
+                </el-menu-item>
+            </el-submenu>
+            <el-menu-item index="3">留&nbsp;&nbsp;&nbsp;&nbsp;言</el-menu-item>
+            <el-menu-item index="4"><router-link to="">关&nbsp;&nbsp;&nbsp;&nbsp;于</router-link></el-menu-item>
+        </el-menu>
+      </div>
     </div>
-    <div class="navigation">
-      <el-menu 
-        class="el-menu-demo" 
-        mode="horizontal" 
-        text-color="#fff"
-        active-text-color="#ffd04b"
-        background-color="#303133"
-        v-bind:default-active="activeIndex" 
-        v-on:select="handleSelect">
-          <el-menu-item index="1">首&nbsp;&nbsp;&nbsp;&nbsp;页</el-menu-item>
-          <el-submenu index="2">
-              <template slot='title'>分&nbsp;&nbsp;&nbsp;&nbsp;类</template>
-              <el-menu-item :index="''+tag.subindex" v-for="tag in tags" :key='tag.subindex'>{{tag.subitem}}
-              </el-menu-item>
-          </el-submenu>
-          <el-menu-item index="3">留&nbsp;&nbsp;&nbsp;&nbsp;言</el-menu-item>
-          <el-menu-item index="4">关&nbsp;&nbsp;&nbsp;&nbsp;于</el-menu-item>
-      </el-menu>
-    </div>
-    <div class="search">
-      <form>
-        <input type="text" name="search" id="search" placeholder="请输入...">
-        <button type="submit"></button>
-      </form>
-    </div>
+
   </div>  
 </template>
 
@@ -42,11 +37,12 @@ export default {
     return {
       activeIndex: '1',
       tags:[],
-      title:'Bulijiojio'
+      title:'Bulijiojio',
+      search:''
     }
   },
   methods: {
-    getTags: function() {
+    getTags() {
       this.tags = [
         {subitem:'JavaScript', subindex:'2-1', other:''},
         {subitem:'HTML/CSS', subindex:'2-2', other:''},
@@ -54,12 +50,9 @@ export default {
         {subitem:'Android', subindex:'2-4', other:''}
       ]
     },
-    getItem: function(tag) {
-      // console.log(tag)
-    },
     handleSelect(key, keyPath) {
         // console.log(key, keyPath);
-    }
+    },
   },
   mounted() {
     this.getTags();

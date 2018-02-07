@@ -4,13 +4,16 @@
     <div class="content">
       <div class="container">
         <el-row :gutter="50">
-          <el-col :span="18" class='main-list'>
+          <el-col :span="16" class='main-list'>
             <div class="grid-content">
-              <!-- <article-list :dataList="messageLists"></article-list> -->
-              <article-list></article-list>
+              <blog-list :filterWords="filterWords"></blog-list>
             </div>
           </el-col>
-          <el-col :span="6" class='side-list'><div class="grid-content"></div></el-col>
+          <el-col :span="8" class='side-list'>
+            <div class="grid-content">
+              <search v-on:filterArticle="setFilterWords"></search>
+            </div>
+          </el-col>
         </el-row>
       </div>
     </div>
@@ -21,18 +24,20 @@
 <script>
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import ArticleList from '@/components/ArticleList'
+import BlogList from '@/components/BlogList'
+import Search from '@/components/Search'
 
 export default {
   name: 'Blog',
   components: {
     'blogHeader': Header,
     'blogFooter': Footer,
-    'articleList': ArticleList,
+    'blogList': BlogList,
+    'search': Search,
   },
   data () {
     return {
-      // messageLists: [],
+      filterWords: '',
     }
   },
   mounted() {
@@ -42,8 +47,13 @@ export default {
     getMessage() {
       this.$axios.get('http://jsonplaceholder.typicode.com/posts')
         .then((rsp) => {
-          this.$store.commit('initArticleList', rsp.data);
+          this.$store.commit('initBlogList', rsp.data);
+          this.$store.commit('setCurrentBlogList', rsp.data);
         })
+    },
+    setFilterWords(text) {
+      console.log(text)
+      this.filterWords = text;
     }
   }
 }
